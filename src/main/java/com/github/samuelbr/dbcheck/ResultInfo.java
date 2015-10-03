@@ -13,7 +13,7 @@ import com.google.common.collect.Maps;
 public class ResultInfo {
 
 	private static final Interner<String> MAP_KEYS_INTERNER = Interners.newWeakInterner();
-	
+
 	private final Map<String, Object> result;
 	private final List<String> tags;
 	private final long timestamp;

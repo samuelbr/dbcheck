@@ -25,7 +25,7 @@ public final class ApplicationContext {
 	
 	private void init() {
 		LOG.info("Initialize application context");
-		sourceInfoRepository = new SourceInfoRepository("config.js");
+		sourceInfoRepository = new SourceInfoRepository("sources.js");
 		resultInfoRepository = new ResultInfoRepository();
 		dbExecutor = new DbExecutor("mybatis-config.xml");
 		
@@ -55,8 +55,12 @@ public final class ApplicationContext {
 		return dbExecutor;
 	}
 	
-	public SourceInfoRepository getSourcesRepository() {
+	public SourceInfoRepository getSourceInfoRepository() {
 		return sourceInfoRepository;
+	}
+	
+	public ResultInfoRepository getResultInfoRepository() {
+		return resultInfoRepository;
 	}
 	
 	public static void register(ServletContext servletContext) {
