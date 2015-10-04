@@ -19,6 +19,12 @@ public class MainServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ApplicationContext applicationContext = ApplicationContext.getApplicationContext(getServletContext());
+		
+		if (!applicationContext.isActive()) {
+			response.setStatus(HttpServletResponse.SC_SEE_OTHER);
+			return;
+		}
+		
 		ResultInfoRepository resultInfoRepository = applicationContext.getResultInfoRepository();
 		
 		String clearFlag = request.getHeader("X-Clear");
