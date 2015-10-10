@@ -19,7 +19,7 @@ public class DbCheckPoolerJob extends Thread {
 	
 	private static final long DEFAULT_INTERVAL = 10000;
 	
-	private final DbExecutor dbExecutor;
+	private final JndiDbExecutor dbExecutor;
 	
 	private final SourceInfoRepository sourceInfoRepository;
 	
@@ -32,11 +32,11 @@ public class DbCheckPoolerJob extends Thread {
 	private long interval = DEFAULT_INTERVAL;
 
 	public DbCheckPoolerJob(
-			DbExecutor dbExecutor, 
+			JndiDbExecutor jndiDbExecutor, 
 			SourceInfoRepository sourceInfoRepository,
 			ResultInfoRepository resultInfoRepository, 
 			Properties properties) {
-		this.dbExecutor = dbExecutor;
+		this.dbExecutor = jndiDbExecutor;
 		this.sourceInfoRepository = sourceInfoRepository;
 		this.resultInfoRepository = resultInfoRepository;
 		applyProperties(properties);

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Interner;
 import com.google.common.collect.Interners;
 import com.google.common.collect.Maps;
@@ -19,7 +18,7 @@ public class ResultInfo {
 	private final long timestamp;
 	
 	private ResultInfo(Map<String, Object> result, List<String> tags, long timestamp) {
-		this.result = ImmutableMap.copyOf(result);
+		this.result = result;
 		this.tags = tags;
 		this.timestamp = timestamp;
 	}

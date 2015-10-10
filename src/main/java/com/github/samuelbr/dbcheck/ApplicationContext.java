@@ -28,7 +28,9 @@ public final class ApplicationContext {
 	
 	private ResultInfoRepository resultInfoRepository;
 	
-	private DbExecutor dbExecutor;
+//	private DbExecutor dbExecutor;
+	
+	private JndiDbExecutor jndiDbExecutor;
 	
 	private Properties properties;
 	
@@ -57,10 +59,10 @@ public final class ApplicationContext {
 		
 		sourceInfoRepository = new SourceInfoRepository("sources.js");
 		resultInfoRepository = new ResultInfoRepository(properties);
-		dbExecutor = new DbExecutor("mybatis-config.xml");
+		jndiDbExecutor = new JndiDbExecutor();
 		
 		poolerJob = new DbCheckPoolerJob(
-				dbExecutor, 
+				jndiDbExecutor, 
 				sourceInfoRepository, 
 				resultInfoRepository,
 				properties);
@@ -109,10 +111,6 @@ public final class ApplicationContext {
 		List<String> allowedValuesList = Splitter.on(",").omitEmptyStrings().trimResults().splitToList(allowedValues);
 		
 		return allowedValuesList.contains(settedValue);
-	}
-	
-	public DbExecutor getDbExecutor() {
-		return dbExecutor;
 	}
 	
 	public SourceInfoRepository getSourceInfoRepository() {
